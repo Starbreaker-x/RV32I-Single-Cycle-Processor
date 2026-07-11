@@ -1,6 +1,6 @@
 /* Getting statrted on the ALU*/
 
-module ALU(input logic [31:0] A , B, input logic ALU_Control [3:0],
+module ALU(input logic [31:0] A , B, input logic  [3:0] ALU_Control ,
    output logic [31:0] Result, output logic Zero );
 
 
@@ -16,18 +16,16 @@ module ALU(input logic [31:0] A , B, input logic ALU_Control [3:0],
     /*OR*/   4'b0011: Result = A | B;
     /*XOR*/  4'b0100: Result = A ^ B;
 
-    /*SLT*/  4'b0101: ($signed(A) < $signed(B));
-    /*SLTU*/ 4'b0110: (A < B);
+    /*SLT*/  4'b0101: Result = ($signed(A) < $signed(B)) ? 32'd1 : 32'd0;
+    /*SLTU*/ 4'b0110: Result = (A < B) ? 32'd1 : 32'd0;
 
-    /*SLL*/  4'b0111: A << B[4:0];
-    /*SRL*/  4'b1000: A >> B[4:0];
-    /*SRA*/  4'b1001: $signed(A) >>> B[4:0];
-
-    endcase
-
-    Zero = (Result == 32'd0)
-
-
-   end
-
-endmodule   
+    /*SLL*/  4'b0111: Result = A << B[4:0];
+    /*SRL*/  4'b1000: Result = A >> B[4:0];
+    /*SRA*/  4'b1001: Result = $signed(A) >>> B[4:0];
+    
+    
+     endcase
+     Zero = (Result == 32'd0);
+ 
+     end
+endmodule  
