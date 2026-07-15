@@ -8,16 +8,14 @@
         
      */
 
-module RF_tb(){
+module RF_tb();
 
-input logic [4:0] A1, A2, A3, 
-input logic [31:0] WD3, 
-input logic WE3, clk,
-output logic [31:0] RD1, RD2
+logic [4:0] A1, A2, A3;
+logic [31:0] WD3;
+logic WE3, clk;
+logic [31:0] RD1, RD2;
 
 
-Reg_File dut(A1, A2, A3, WD3 , WE3 , clk , RD1 , RD2)
+Reg_File dut(A1, A2, A3, WD3 , WE3 , clk , RD1 , RD2);
 
-//I'll finish up  in the morning
-
-}
+endmodule
