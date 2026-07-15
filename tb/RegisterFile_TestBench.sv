@@ -28,14 +28,14 @@ initial begin
 WD3 = 32'b11110000111100001111000011110000; A3 = 5'b00001; A1 = 5'b00001; WE3 = 1;
 @(posedge clk);
 #1;
-assert( RD1 === 32'b11110000111100001111000011110000 );
+assert( RD1 === 32'b11110000111100001111000011110000 ) else $error(" failed test 1 ");
 
 //writing into register and reading from RD2
 @(negedge clk);
 WD3 = 32'b00001111000011110000111100001111; A3 = 5'b00011; A2 = 5'b00011;
 @(posedge clk);
 #1;
-assert( RD2 === 32'b00001111000011110000111100001111);
+assert( RD2 === 32'b00001111000011110000111100001111) else $error(" failed test 2 ");
 
 /*Seeing if we try writing into a register but WE3 is low so nothing changes for bot Reading Registers*/
 
@@ -44,7 +44,7 @@ assert( RD2 === 32'b00001111000011110000111100001111);
 WD3 = 32'b00000000000000000000000000000001; A3 = 5'b00001; A1 = 5'b00001; WE3 = 0;
 @(posedge clk);
 #1;
-assert( RD1 === 32'b11110000111100001111000011110000 );
+assert( RD1 === 32'b11110000111100001111000011110000 ) else $error(" failed test 3 ");
 
 
 //RD2 check
@@ -52,7 +52,7 @@ assert( RD1 === 32'b11110000111100001111000011110000 );
 A3 = 5'b00011; A2 = 5'b00011;
 @(posedge clk);
 #1
-assert( RD2 === 32'b00001111000011110000111100001111 );
+assert( RD2 === 32'b00001111000011110000111100001111 ) else $error(" failed test 4 ");
 
 /*Checking to see if register reads the correct value before and after a new write*/
 
@@ -62,15 +62,15 @@ assert( RD2 === 32'b00001111000011110000111100001111 );
 assert( RD1 === 32'b11110000111100001111000011110000 ); A3 = 5'b00001; WE3 = 1;
 @(posedge clk);
 #1;
-assert( RD1 === 32'b00000000000000000000000000000001 ); 
+assert( RD1 === 32'b00000000000000000000000000000001 ) else  $error(" failed test 5 "); 
 
 //RD2
 
 @(negedge clk);
-assert( RD2 ===  32'b000011110000111100001111000011110); A3 = 5'b00011;
+assert( RD2 ===  32'b00001111000011110000111100001111) else $error(" failed test 6 , got: %b", RD2); A3 = 5'b00011;
 @(posedge clk);
 #1;
-assert( RD2 ===  32'b00000000000000000000000000000001 );
+assert( RD2 ===  32'b00000000000000000000000000000001 )else $error(" failed test 7 ");
 
 /* x0 checks, must be read as 0 and will be 0 no matter what is weritten to it*/
 
@@ -80,14 +80,14 @@ assert( RD2 ===  32'b00000000000000000000000000000001 );
 A1 = 5'b00000; A2 = 5'b00000;
 @(posedge clk);
 #1;
-assert( (RD1 === 32'd0) && (RD2 === 32'd0) );
+assert( (RD1 === 32'd0) && (RD2 === 32'd0) ) else $error(" failed test 8 ");
 
 //Writing check
 @(negedge clk);
 A3 = 5'b00000;
 @(posedge clk);
 #1
-assert( (RD1 === 32'd0) && (RD2 === 32'd0) );
+assert( (RD1 === 32'd0) && (RD2 === 32'd0) ) else $error(" failed test 9 ");
 
 
 
