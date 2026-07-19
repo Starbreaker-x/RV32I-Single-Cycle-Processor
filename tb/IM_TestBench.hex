@@ -1,11 +1,11 @@
 //Lets input the lw and sw instruction examples from the register file testbench
 //lw
-FF
-C4
-A3
 03
+A3
+C4
+FF
 //sw
-00
-64
-A4
 23
+A4
+64
+00
