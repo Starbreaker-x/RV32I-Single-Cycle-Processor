@@ -21,11 +21,11 @@ initial begin
 
 A = 32'h0000_0000;
 #1
-assert(RD === 32'hFFC4A303);
+check(32'hFFC4A303, "lw test");
 
 A = 32'h0000_0100;
 #1
-assert(RD === 32'h0064A423);
+check(32'h0064A423, "sw test");
 
 
 
