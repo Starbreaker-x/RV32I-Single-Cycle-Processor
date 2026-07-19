@@ -26,7 +26,7 @@ check(32'hFFC4A303, "lw test");
 A = 32'h0000_0004;
 #1
 check(32'h0064A423, "sw test");
-
+$finish;
 
 
 
