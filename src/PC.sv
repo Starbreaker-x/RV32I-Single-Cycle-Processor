@@ -4,9 +4,10 @@
 
  module PC(input logic [31:0] PCNext, input logic clk, output logic [31:0] PC);
 
-    always_ff @(clk posedge){
+    always_ff @( posedge clk) begin
        PC <= PCNext;
-    }
+      
+    end
 
  endmodule
 
