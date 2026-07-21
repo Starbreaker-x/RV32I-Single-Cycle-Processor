@@ -60,7 +60,7 @@ PCSrc = 1;
 
 @(posedge clk);
 #2
-check(32'h100, 32'h100D, "PCTarget test");// To see if we use the PCTarget adder when PC_mux is high
+check(32'h1009, 32'h100A, "PCTarget test");// To see if we use the PCTarget adder when PC_mux is high
 
 @(negedge clk);
 PCSrc = 0;
