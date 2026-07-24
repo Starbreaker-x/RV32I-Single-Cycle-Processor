@@ -59,7 +59,7 @@ and other types of instructions after everything else is implemented  */
 
         Branch = 1'b0; 
 
-        ALUOp = 1'b10; 
+        ALUOp = 2'b10; 
 
      end
 
