@@ -3,7 +3,7 @@ and other types of instructions after everything else is implemented  */
 
 
     module Main_Decoder(input logic [6:0] Op,
-    output logic RegWrite, ALUSrc, MemWrite, ResultSrc, Branch
+    output logic RegWrite, ALUSrc, MemWrite, ResultSrc, Branch,
     output logic [1:0] ImmSrc, ALUOp);
 
 

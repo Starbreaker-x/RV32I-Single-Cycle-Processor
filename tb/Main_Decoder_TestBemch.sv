@@ -13,7 +13,7 @@ module MD_tb();
  task check( input logic [6:0] Op,
   input logic RegWrite_exp, ALUSrc_exp, MemWrite_exp, ResultSrc_exp, Branch_exp, 
   input logic [1:0] ImmSrc_exp, ALUOp_exp, 
-  string testname)
+  string testname);
 
   $display("Op Code: %b, %s test", Op, testname );
 
@@ -47,7 +47,7 @@ endtask
 initial begin
 
 
-Op = 7'b0000011 //lw
+Op = 7'b0000011; //lw
 #2;
 check( 1'b1 , 1'b1 , 1'b0 , 1'b1 , 1'b0 , 2'b00 , 2'b00 , "lw" );
 
