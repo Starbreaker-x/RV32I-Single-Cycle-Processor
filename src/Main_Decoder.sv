@@ -10,7 +10,7 @@ and other types of instructions after everything else is implemented  */
 always_comb begin
     case(Op)
 
-     0000011: begin // lw
+     7'b0000011: begin // lw
 
         RegWrite = 1'b1;
 
@@ -28,7 +28,7 @@ always_comb begin
 
      end
 
-     0100011: begin // sw
+     7'b0100011: begin // sw
         RegWrite = 1'b0; 
 
         ImmSrc = 2'b01; 
@@ -45,7 +45,7 @@ always_comb begin
 
 
      end
-     0110011: begin  //R-type
+     7'b0110011: begin  //R-type
          
         RegWrite = 1'b1; 
 
@@ -63,7 +63,7 @@ always_comb begin
 
      end
 
-     1100011: begin //beq
+     7'b1100011: begin //beq
           
         RegWrite = 1'b0; 
 
