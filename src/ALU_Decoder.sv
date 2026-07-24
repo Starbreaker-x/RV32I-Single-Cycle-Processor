@@ -1,4 +1,4 @@
-module ALU_Decoder(input logic Op, funct7,
+module ALU_Decoder(input logic Op_5, funct7_5,
 input logic [1:0] ALUOp, input logic [2:0] funct3, output logic [3:0] ALU_Control);
 
 case(ALUOp)
@@ -14,7 +14,7 @@ case(funct3)
 
 000: begin
 
-if( Op && funct7)
+if( Op_5 && funct7_5)
     ALU_Control = 4'b0001; //sub
 else
     ALU_Control = 4'b0000; //add
@@ -34,7 +34,7 @@ end
 
 101: begin
 
-if(funct7)
+if(funct7_5)
     ALU_Control = 4'b1001; //SRA
 else
     ALU_Control = 4'b1000; //SRL
