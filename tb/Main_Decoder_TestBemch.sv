@@ -44,35 +44,32 @@ module MD_tb();
 
 endtask
 
+initial begin
 
 
+Op = 7'b0000011 //lw
+#2;
+check( 1'b1 , 1'b1 , 1'b0 , 1'b1 , 1'b0 , 2'b00 , 2'b00 , "lw" );
 
+Op = 7'b0100011;//sw
+#2;
+check( 1'b0 , 1'b1 , 1'b1 , 1'bx , 1'b0 , 2'b01 , 2'b00 , "sw" );
 
+Op = 7'b0110011;//R-type
+#2;
+check( 1'b1 , 1'b0 , 1'b0 , 1'b0 , 1'b0 , 2'bxx , 2'b10 , "R-type");
 
+Op = 7'b1100011;//beq
+#2;
+check( 1'b0 , 1'b0 , 1'b0 , 1'bx , 1'b1 , 2'b10 , 2'b01 , "beq");
 
+Op = 7'b1111111;//default test code
+#2;
+check( 1'bx, 1'bx , 1'bx , 1'bx , 1'bx , 2'bxx , 2'bxx , "default");
+$display("All test passed");
+$finish;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+end
 
 
 
