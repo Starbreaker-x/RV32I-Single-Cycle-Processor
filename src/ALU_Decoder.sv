@@ -1,6 +1,10 @@
 module ALU_Decoder(input logic Op_5, funct7_5,
 input logic [1:0] ALUOp, input logic [2:0] funct3, output logic [3:0] ALU_Control);
 
+
+
+always_comb begin
+
 case(ALUOp)
 
 00: ALU_Control = 4'b0000; // lw/sw
@@ -45,6 +49,8 @@ endcase
 end
 
 endcase
+
+end
 
 
 endmodule

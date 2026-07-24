@@ -7,7 +7,7 @@ and other types of instructions after everything else is implemented  */
     output logic [1:0] ImmSrc, ALUOp);
 
 
-
+always_comb begin
     case(Op)
 
      0000011: begin // lw
@@ -101,6 +101,7 @@ and other types of instructions after everything else is implemented  */
 
 
    endcase
+   end
 
 
 endmodule
