@@ -17,32 +17,28 @@ module MD_tb();
 
   $display("Op Code: %b, %s test", Op, testname );
 
-  /* Planning on adding if and else statments to check
-   each output also have $finish on a failed assertion to end the simulation early */
+  if(RegWrite !== RegWrite_exp)
+  $display(" RegWrite is: %b, expected: %b", RegWrite, RegWrite_exp); $finish;
 
+   if(ALUSrc !== ALUSrc_exp)
+  $display(" ALUSrc is: %b, expected: %b", ALUSrc, ALUSrc_exp); $finish;
 
+   if(MemWrite !== MemWrite_exp)
+  $display(" MemWrite is: %b, expected: %b", MemWrite, MemWrite_exp); $finish;
 
+   if(ResultSrc !== ResultSrc_exp)
+  $display(" ResultSrc is: %b, expected: %b", ResultSrc, ResultSrc_exp); $finish;
 
+   if(Branch !== Branch_exp)
+  $display(" Branch is: %b, expected: %b", Branch, Branch_exp); $finish;
 
+   if(ImmSrc !== ImmSrc_exp)
+  $display(" ImmSrc is: %b, expected: %b", ImmSrc, ImmSrc_exp); $finish;
 
+   if(ALUOp !== ALUOp_exp)
+  $display(" ALUOp is: %b, expected: %b", ALUOp, ALUOp_exp); $finish;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+  $display(" All outputs for Op Code: %b are valid, %s test passes", Op, testname);
 
 
 
