@@ -7,16 +7,16 @@ always_comb begin
 
 case(ALUOp)
 
-00: ALU_Control = 4'b0000; // lw/sw
+2'b00: ALU_Control = 4'b0000; // lw/sw
 
-01: ALU_Control = 4'b0001; // beq
+2'b01: ALU_Control = 4'b0001; // beq
 
 
-10:  begin  // ALUOp 10 dictates an R-type instruction
+2'b10:  begin  // ALUOp 10 dictates an R-type instruction
 
 case(funct3)
 
-000: begin
+3'b000: begin
 
 if( Op_5 && funct7_5)
     ALU_Control = 4'b0001; //sub
@@ -24,19 +24,19 @@ else
     ALU_Control = 4'b0000; //add
 end
 
-010: ALU_Control = 4'b0101; //slt
+3'b010: ALU_Control = 4'b0101; //slt
 
-110: ALU_Control = 4'b0011; //or
+3'b110: ALU_Control = 4'b0011; //or
 
-111: ALU_Control = 4'b0010; //and
+3'b111: ALU_Control = 4'b0010; //and
 
-100: ALU_Control = 4'b0100; //xor
+3'b100: ALU_Control = 4'b0100; //xor
 
-011: ALU_Control = 4'b0110; //sltu 
+3'b011: ALU_Control = 4'b0110; //sltu 
 
-001: ALU_Control = 4'b0111; //SLL
+3'b001: ALU_Control = 4'b0111; //SLL
 
-101: begin
+3'b101: begin
 
 if(funct7_5)
     ALU_Control = 4'b1001; //SRA

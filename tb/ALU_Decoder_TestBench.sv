@@ -7,14 +7,14 @@ logic[3:0] ALU_Control;
 
 ALU_Decoder dut( Op_5 , funct7_5 , ALUOp , funct3 , ALU_Control );
 
-task check(input logic [3:0] ALU_Control_exp, string testname);
+task check(input logic [3:0] ALU_Control_exp, input  string testname);
 
 if( ALU_Control !== ALU_Control_exp) begin
     $display(" %s failed, ALU_control is: %b , expected: %b", testname , ALU_Control , ALU_Control_exp);
     $finish;
 end
 else
-    $display(" %s test passed");
+    $display(" %s test passed", testname);
 
 endtask
 
