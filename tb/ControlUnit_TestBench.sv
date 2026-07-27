@@ -67,7 +67,7 @@ check( 4'b0001 , 1'b1 , "beq: Branching");
 //R-type instructions from now on, Op will be the same
 
 //add
-Op = 0110011; funct3 = 3'b000; funct7_5 = 1'b0;
+Op = 7'b0110011; funct3 = 3'b000; funct7_5 = 1'b0;
 #2;
 check( 4'b0000 , 1'b0 , "add" );
 
@@ -93,6 +93,7 @@ check( 4'b1000 , 1'b0 , "SRL");
 funct7_5 = 1'b1;
 #2;
 check( 4'b1001 , 1'b0 , "SRA");
+$display("All tests passed");
 $finish;
   end
 
