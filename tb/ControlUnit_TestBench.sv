@@ -6,7 +6,7 @@ module CU_tb();
 
 
 
-logic [6:0] Op ,  logic [2:0] funct3 ,  logic funct7_5 , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite;  logic [1:0] ImmSrc;  logic [3:0] ALU_Control;
+logic [6:0] Op;  logic [2:0] funct3;  logic funct7_5 , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite;  logic [1:0] ImmSrc;  logic [3:0] ALU_Control;
 
 
 
@@ -43,7 +43,7 @@ check( 4'b0000 , 1'b0 , "lw" );
 
 
 //sw
-OP = 7'b0100011; funct3 = 3'bxxx; funct7_5 = 1'bx; 
+Op = 7'b0100011; funct3 = 3'bxxx; funct7_5 = 1'bx; 
 #2;
 check( 4'b0000 , 1'b0, "sw" ) ;
 
@@ -52,13 +52,13 @@ check( 4'b0000 , 1'b0, "sw" ) ;
 
 //beq
 
-*/test 1*/ // Zero = 0
-Op = 7'b1100011; funct3 = 3'bxxx;  funct7_5 1'bx;
+/*test 1*/  //Zero = 0
+Op = 7'b1100011; funct3 = 3'bxxx;  funct7_5  =  1'bx;
 #2;
 check( 4'b0001 , 1'b0, "beq: Not Branching");
 
 
-*/test 2*/ // Zero = 1
+/*test 2*/ // Zero = 1
 Zero = 1'b1;
 #2;
 check( 4'b0001 , 1'b1 , "beq: Branching");
@@ -85,7 +85,7 @@ check( 4'b0001, 1'b0 , "sub");
 //SRL
 funct3 = 3'b101; funct7_5 = 1'b0;
 #2
-check( 4'b1000 , 1'b0 , "SRL")
+check( 4'b1000 , 1'b0 , "SRL");
 
 
 
@@ -93,7 +93,7 @@ check( 4'b1000 , 1'b0 , "SRL")
 funct7_5 = 1'b1;
 #2;
 check( 4'b1001 , 1'b0 , "SRA");
-
+$finish;
   end
 
 
