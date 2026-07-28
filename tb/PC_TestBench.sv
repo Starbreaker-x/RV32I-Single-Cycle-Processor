@@ -4,7 +4,7 @@ that are technically made up of other modules, so lets see how I do*/
 module PC_tb();
 
 // I/O for the PC
-logic [31:0] PCNext, PC; logic clk = 0;
+logic [31:0] PCNext, PC; logic clk = 0; logic reset = 0;
 
 //I/O for the Plus4 Adder
 logic [31:0] PCPlus4;
@@ -23,7 +23,7 @@ PCTarget PCT(PC, ImmExt, PCTarget);
 PC_Mux PCM(PCPlus4, PCTarget, PCSrc, PCNext);
 
 //Dut
-PC dut(PCNext, clk, PC);
+PC dut(PCNext, clk, reset, PC);
 
 
 task check(input [31:0] expected_PC, expected_PCNext, input  string testname);
@@ -68,6 +68,13 @@ PCSrc = 0;
 @(posedge clk);
 #2
 check(32'h100D, 32'h1011, " Mux switching test ");// To see if the mux can switch back between both operations correctlhy
+
+@(negedge clk);
+reset = 1;
+
+@(posedge clk);
+#2;
+check(32'h0000_0000, 32'h0004 , " Reset test ")// To see if reset sets the PC back to 0;
 $finish;
 end
 
