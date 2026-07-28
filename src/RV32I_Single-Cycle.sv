@@ -43,12 +43,17 @@ end
 /* Building Blocks */
 
 
-ALU ALU( SrcA , SrcB , ALUControl , ALUResult , Zero); 
+ALU ALU( SrcA , SrcB , ALUControl , ALUResult , Zero ); 
 
-Reg_File RegisterFile( Instr[19:15] , Instr[24:20] , Instr[11:7] , Result , RegWrite , clk , SrcA , RD2);
+Reg_File RegisterFile( Instr[19:15] , Instr[24:20] , Instr[11:7] , Result , RegWrite , clk , SrcA , RD2 );
 
+SrcB_Mux SrcB_Mux( RD2 , ImmExt , ALUSrc , SrcB );
 
+DM DataMemory( ALUResult , WriteData , clk , MemWrite , ReadData );
 
+Result_Mux Result_Mux( ALUResult , ReadData , ResultSrc , Result );
+
+IM InstructionMemory( );
 
 
 
