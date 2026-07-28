@@ -2,7 +2,7 @@
  for PCNext, PCPlus4 and PCTarget. I will also inlcude the mux to switch between the adders depending on the operation*/
 
 
- module PC(input logic [31:0] PCNext, input logic clk, reset output logic [31:0] PC);
+ module PC(input logic [31:0] PCNext, input logic clk, reset , output logic [31:0] PC);
 
     always_ff @( posedge clk) begin
       if(reset)

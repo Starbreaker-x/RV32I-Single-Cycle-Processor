@@ -74,7 +74,8 @@ reset = 1;
 
 @(posedge clk);
 #2;
-check(32'h0000_0000, 32'h0004 , " Reset test ")// To see if reset sets the PC back to 0;
+check(32'h0000_0000, 32'h0004 , " Reset test ");// To see if reset sets the PC back to 0;
+$display("All tests passed");
 $finish;
 end
 
