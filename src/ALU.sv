@@ -1,5 +1,3 @@
-/* Getting statrted on the ALU*/
-
 module ALU(input logic [31:0] A , B, input logic  [3:0] ALU_Control ,
    output logic [31:0] Result, output logic Zero );
 

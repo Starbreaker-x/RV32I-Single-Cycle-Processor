@@ -23,11 +23,4 @@ module Extend( input logic [31:0] Instr, input logic [1:0] ImmSrc, output logic 
 
      end
 
-
-
-
-
-
-
-
 endmodule
