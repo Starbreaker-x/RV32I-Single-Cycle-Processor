@@ -65,17 +65,5 @@ Extend ExtendUnit( Instr , ImmSrc , ImmExt );
 
 CU ControlUnit( Instr[6:0] , Instr[14:12] , Instr[30] , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite , ImmSrc , ALUControl );
 
-CU dd( .Op( Instr[6:0] ) , .funct3( Instr[14:12] ) , .funct7_5( Instr[30]) , .Zero( Zero ) , .PCSrc( PCSrc ) , .ALUSrc( ALUSrc ), .ResultSrc( ResultSrc ) , .MemWrite( MemWrite) , .RegWrite( RegWrite) , .ImmSrc( ImmSrc ), .ALU_Control(ALUControl) );              
-
-
-
-
-
-
-
-
-
-
-
 
 endmodule

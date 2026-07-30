@@ -7,7 +7,7 @@ logic [7:0] mem [0:1023];
 
 //initializing our program
 initial begin 
-    $readmemh("IM_TestBench.hex",mem);
+    $readmemh("RV32I_Instructions.hex",mem);
 end
 
 //Little Endian for RISC-V
