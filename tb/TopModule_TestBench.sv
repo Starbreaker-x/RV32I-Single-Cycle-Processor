@@ -1,6 +1,6 @@
 module RV32I_tb();
 
-logic clk;
+logic clk = 0;
 logic reset;
 
 logic [31:0] PC;
@@ -17,6 +17,8 @@ reset = 1'b1;
 reset = 1'b0;
 
 
+@(posedge clk);
+$display("PC: %%h", PC);
 
 
 end

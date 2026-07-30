@@ -8,7 +8,7 @@ logic clk = 0,WE;
 DM dut(A,WD,clk,WE,RD);
 
 
-task check(input logic [31:0] expected, string testname);
+task check(input logic [31:0] expected, input string testname);
 if (RD === expected)
   $display("At address %h is: %b, %s passed", A, RD, testname);
 else
