@@ -35,7 +35,7 @@ logic [1:0] ImmSrc;
 logic RegWrite;
 
 
-
+assign WriteData = RD2;
 
 
 /* Building Blocks */
