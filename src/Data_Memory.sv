@@ -8,7 +8,7 @@ module DM(input logic [31:0] A, WD, input logic clk, WE, output logic [31:0] RD)
     
     */
 
-logic [7:0] mem [0:1024];
+logic [7:0] mem [0:1023];
 
 initial begin
 $readmemh("DataMemory_Initialization.hex", mem);
