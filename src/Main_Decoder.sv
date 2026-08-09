@@ -10,7 +10,7 @@ and other types of instructions after everything else is implemented  */
 always_comb begin
     case(Op)
 
-     7'b0000011: begin // lw
+     7'b0000011: begin // lw , lb , lh , lbu ,lhu
 
         RegWrite = 1'b1;
 
@@ -28,7 +28,56 @@ always_comb begin
 
      end
 
-     7'b0100011: begin // sw
+     7'b00010011: begin //  addi , slli , slti , sltiu , xori , srli , srai , ori , andi
+
+        RegWrite = 1'b1;
+
+        ImmSrc = 3'b000; 
+
+        ALUSrc = 1'b1; 
+
+        MemWrite = 1'b0;
+
+        ResultSrc = 1'b0;
+
+        Branch = 1'b0;
+
+        ALUOp = 2'b10; 
+
+
+     end
+
+    7'b1100111: begin // jalr
+
+     
+
+    end
+
+
+    7'b1101111: begin //jal
+
+
+
+    end
+
+
+    7'b0110111: begin //lui
+
+
+
+    end
+
+    
+    7'b0010111: begin //auipc
+
+
+
+    end
+
+
+
+
+     7'b0100011: begin // sw , sb , sh
         RegWrite = 1'b0; 
 
         ImmSrc = 3'b001; 
@@ -63,7 +112,7 @@ always_comb begin
 
      end
 
-     7'b1100011: begin //beq
+     7'b1100011: begin //beq, bne , blt , bge , bltu , bgeu
           
         RegWrite = 1'b0; 
 
