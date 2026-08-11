@@ -9,7 +9,27 @@ case(ALUOp)
 
 2'b00: ALU_Control = 4'b0000; // lw/sw
 
-2'b01: ALU_Control = 4'b0001; // beq
+2'b01: begin // Branching instructions
+    
+    case(funct3)
+
+    3'b000: ALU_Control = 4'b0001; //beq
+
+    3'b001: ALU_Control = 4'b0001; //bne
+
+    3'b100: ALU_Control = 4'b0101; //blt
+
+    3'b101: ALU_Control = 4'b0101; //bge
+
+    3'b110: ALU_Control = 4'b0110; //bltu
+
+    3'b111: ALU_Control = 4'b0110; //bgeu
+
+    endcase
+    
+
+end
+
 
 
 2'b10:  begin  // ALUOp 10 dictates an R-type instruction
