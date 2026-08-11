@@ -27,7 +27,6 @@ case(ALUOp)
 
     endcase
     
-
 end
 
 

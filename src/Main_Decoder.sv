@@ -1,6 +1,3 @@
-/* Only doing the basic instructions found in the table in the text book, I plan on introducing I type Immediate
-and other types of instructions after everything else is implemented  */
-
 
     module Main_Decoder(input logic [6:0] Op,
     output logic RegWrite, ALUSrc, MemWrite, ResultSrc, Branch,
