@@ -63,7 +63,7 @@ PCTarget PCTarget_Adder( PC , ImmExt , PCTarget );
 
 Extend ExtendUnit( Instr , ImmSrc , ImmExt );
 
-CU ControlUnit( Instr[6:0] , Instr[14:12] , Instr[30] , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite , ImmSrc , ALUControl );
+CU ControlUnit( ALUResult , Instr[6:0] , Instr[14:12] , Instr[30] , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite , ImmSrc , ALUControl );
 
 
 endmodule

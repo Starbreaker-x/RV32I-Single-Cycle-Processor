@@ -7,11 +7,11 @@ module CU_tb();
 
 
 logic [6:0] Op;  logic [2:0] funct3;  logic funct7_5 , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite;  logic [1:0] ImmSrc;  logic [3:0] ALU_Control;
+logic [31:0] ALUResult;
 
 
 
-
-CU dut( Op , funct3 , funct7_5 , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite , ImmSrc , ALU_Control );
+CU dut( ALUResult , Op , funct3 , funct7_5 , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite , ImmSrc , ALU_Control );
 
 
 task check( input logic [3:0] ALU_Control_exp , input logic  PCSrc_exp , input string testname);
