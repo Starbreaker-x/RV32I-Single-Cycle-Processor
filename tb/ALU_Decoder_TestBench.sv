@@ -27,9 +27,32 @@ ALUOp = 2'b00;
 #2;
 check(4'b0000, "lw/sw");
 
-ALUOp = 2'b01;
+
+//Branching Instructions
+ALUOp = 2'b01; funct3 = 3'b000;
 #2;
 check(4'b0001, "beq");
+
+funct3 = 3'b001;
+#2;
+check(4'b0001, "bne");
+
+funct3 = 3'b100;
+#2;
+check(4'b0101, "blt");
+
+funct3 = 3'b101;
+#2;
+check(4'b0101, "bge");
+
+funct3 = 3'b110;
+#2;
+check(4'b0110, "bltu");
+
+funct3 = 3'b111;
+#2;
+check(4'b0110, "bgeu");
+
 
 // R-type instructions
 
