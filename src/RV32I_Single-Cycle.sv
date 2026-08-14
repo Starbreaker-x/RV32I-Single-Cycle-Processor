@@ -31,7 +31,7 @@ logic ResultSrc;
 logic MemWrite;
 logic [3:0] ALUControl;
 logic ALUSrc;
-logic [1:0] ImmSrc;
+logic [2:0] ImmSrc;
 logic RegWrite;
 
 
