@@ -37,16 +37,39 @@ endtask
 
 
 //lw
-Op = 7'b0000011; funct3 = 3'bxxx; funct7_5 = 1'bx; Zero = 1'b0;
+Op = 7'b0000011; funct3 = 3'b010; funct7_5 = 1'bx; Zero = 1'b0;
 #2;
 check( 4'b0000 , 1'b0 , "lw" );
 
+//lb
+funct3 = 3'b000;
+#2;
+check( 4'b0000 , 1'b0 , "lb" );
+
+
+//lh
+funct3 = 3'b001;
+#2;
+check( 4'b0000 , 1'b0 , "lh" );
+
+
+
+//S-type instructions
 
 //sw
-Op = 7'b0100011; funct3 = 3'bxxx; funct7_5 = 1'bx; 
+Op = 7'b0100011; funct3 = 3'b010; funct7_5 = 1'bx; 
 #2;
-check( 4'b0000 , 1'b0, "sw" ) ;
+check( 4'b0000 , 1'b0, "sw" );
 
+//sb
+funct3 = 3'b000;
+#2;
+check( 4'b0000, 1'b0 , "sb");
+
+//sh
+funct3 = 3'b001;
+#2;
+check( 4'b0000 , 1'b0 , "sh");
 
 //B-type instructions
 
@@ -163,7 +186,104 @@ check( 4'b1000 , 1'b0 , "SRL");
 //SRA
 funct7_5 = 1'b1;
 #2;
-check( 4'b1001 , 1'b0 , "SRA");
+check( 4'b1001 , 1'b0 , "SRA" );
+
+
+//SLL
+funct3 = 3'b001; funct7_5 = 1'b0;
+#2;
+check( 4'b0111, 1'b0, "SLL" );
+
+
+//slt
+funct3 = 3'b010;
+#2;
+check( 4'b0101, 1'b0 , "slt" );
+
+
+//or
+funct3 = 3'b110;
+#2;
+check( 4'b0011, 1'b0, "or" );
+
+
+//and
+funct3 = 3'b111;
+#2;
+check( 4'b0010 , 1'b0 , "and" );
+
+
+//xor
+funct3 = 3'b100;
+#2;
+check( 4'b0100, 1'b0 , "xor" );
+
+
+
+//sltu
+funct3 = 3'b011;
+#2;
+check( 4'b0110, 1'b0 , "sltu" );
+
+//I-type immediate instructions
+
+//addi
+Op = 7'b00010011; funct3 = 3'b000; funct7_5 = 1'bx;
+#2;
+check( 4'b0000 , 1'b0 , "addi" );
+
+
+
+//SRLI
+funct3 = 3'b101; funct7_5 = 1'b0;
+#2
+check( 4'b1000 , 1'b0 , "SRLI");
+
+
+
+//SRAI
+funct7_5 = 1'b1;
+#2;
+check( 4'b1001 , 1'b0 , "SRAI" );
+
+
+//SLLI
+funct3 = 3'b001; funct7_5 = 1'b0;
+#2;
+check( 4'b0111, 1'b0, "SLLI" );
+
+
+//slti
+funct3 = 3'b010; funct7_5 = 1'bx;
+#2;
+check( 4'b0101, 1'b0 , "slti" );
+
+
+//ori
+funct3 = 3'b110;
+#2;
+check( 4'b0011, 1'b0, "ori" );
+
+
+//andi
+funct3 = 3'b111;
+#2;
+check( 4'b0010 , 1'b0 , "andi" );
+
+
+//xori
+funct3 = 3'b100;
+#2;
+check( 4'b0100, 1'b0 , "xori" );
+
+
+
+//sltui
+funct3 = 3'b011;
+#2;
+check( 4'b0110, 1'b0 , "sltu" );
+
+
 $display("All tests passed");
 $finish;
   end
