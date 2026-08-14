@@ -3,7 +3,8 @@ module MD_tb();
 
  logic [6:0] Op;
  logic RegWrite, ALUSrc, MemWrite, ResultSrc, Branch;
- logic [1:0] ImmSrc, ALUOp;
+ logic [2:0] ImmSrc;
+ logic [1:0] ALUOp;
 
 
  
@@ -12,7 +13,7 @@ module MD_tb();
 
  task check( input logic [6:0] Op,
   input logic RegWrite_exp, ALUSrc_exp, MemWrite_exp, ResultSrc_exp, Branch_exp, 
-  input logic [1:0] ImmSrc_exp, ALUOp_exp, 
+  input logic [2:0] ImmSrc_exp, ALUOp_exp, 
   input string testname);
 
   $display("Op Code: %b, %s test", Op, testname );
@@ -61,25 +62,29 @@ endtask
 initial begin
 
 
-Op = 7'b0000011; //lw
+Op = 7'b0000011; // lw, lh , lb
 #5;
-check( 7'b0000011 , 1'b1 , 1'b1 , 1'b0 , 1'b1 , 1'b0 , 2'b00 , 2'b00 , "lw" );
+check( 7'b0000011 , 1'b1 , 1'b1 , 1'b0 , 1'b1 , 1'b0 , 3'b000 , 2'b00 , "lw" );
 
-Op = 7'b0100011;//sw
+Op = 7'b0100011;// S-type
 #5;
-check( 7'b0100011 , 1'b0 , 1'b1 , 1'b1 , 1'bx , 1'b0 , 2'b01 , 2'b00 , "sw" );
+check( 7'b0100011 , 1'b0 , 1'b1 , 1'b1 , 1'bx , 1'b0 , 3'b001 , 2'b00 , "S-type" );
 
 Op = 7'b0110011;//R-type
 #5;
-check( 7'b0110011 , 1'b1 , 1'b0 , 1'b0 , 1'b0 , 1'b0 , 2'bxx , 2'b10 , "R-type");
+check( 7'b0110011 , 1'b1 , 1'b0 , 1'b0 , 1'b0 , 1'b0 , 3'bxxx , 2'b10 , "R-type");
 
-Op = 7'b1100011;//beq
+Op = 7'b1100011;//B-type
 #5;
-check( 7'b1100011 , 1'b0 , 1'b0 , 1'b0 , 1'bx , 1'b1 , 2'b10 , 2'b01 , "beq");
+check( 7'b1100011 , 1'b0 , 1'b0 , 1'b0 , 1'bx , 1'b1 , 3'b010 , 2'b01 , "B-Type");
+
+Op = 7'b00010011;//I-type immediate instructions
+#5;
+check( 7'b00010011 , 1'b1 , 1'b1, 1'b0 , 1'b0 , 1'b0 , 3'b000 , 2'b10 , "I-type immediate");
 
 Op = 7'b1111111;//default test code
 #5;
-check( 7'b1111111 , 1'bx, 1'bx , 1'bx , 1'bx , 1'bx , 2'bxx , 2'bxx , "default");
+check( 7'b1111111 , 1'bx, 1'bx , 1'bx , 1'bx , 1'bx , 3'bxxx , 2'bxx , "default");
 $display("All test passed");
 $finish;
 
