@@ -48,20 +48,91 @@ Op = 7'b0100011; funct3 = 3'bxxx; funct7_5 = 1'bx;
 check( 4'b0000 , 1'b0, "sw" ) ;
 
 
+//B-type instructions
+
 
 
 //beq
 
-/*test 1*/  //Zero = 0
-Op = 7'b1100011; funct3 = 3'bxxx;  funct7_5  =  1'bx;
+//Zero = 0
+Op = 7'b1100011; funct3 = 3'b000;  funct7_5  =  1'bx;
 #2;
 check( 4'b0001 , 1'b0, "beq: Not Branching");
 
 
-/*test 2*/ // Zero = 1
+// Zero = 1
 Zero = 1'b1;
 #2;
 check( 4'b0001 , 1'b1 , "beq: Branching");
+
+
+//bne
+
+
+//Zero = 1
+funct3 = 3'b001; 
+#2;
+check( 4'b0001 , 1'b0, "bne: Not Branching");
+
+
+// Zero = 0
+Zero = 1'b0;
+#2;
+check( 4'b0001 , 1'b1 , "bne: Branching");
+
+
+
+//blt
+
+
+funct3 = 3'b100; ALUResult = 1'b0;
+#2;
+check( 4'b0101 , 1'b0, "blt: Not Branching");
+
+
+ALUResult = 1'b1;
+#2;
+check( 4'b0101 , 1'b1 , "blt: Branching");
+
+
+
+//bge
+
+funct3 = 3'b101; ALUResult = 1'b1;
+#2;
+check( 4'b0101 , 1'b0, "bge: Not Branching");
+
+
+ALUResult = 1'b0;
+#2;
+check( 4'b0101 , 1'b1 , "bge: Branching");
+
+
+
+//bltu
+
+funct3 = 3'b110; ALUResult = 1'b0;
+#2;
+check( 4'b0110 , 1'b0, "bltu: Not Branching");
+
+
+ALUResult = 1'b1;
+#2;
+check( 4'b0110 , 1'b1 , "bltu: Branching");
+
+
+
+//bge
+
+funct3 = 3'b111; ALUResult = 1'b1;
+#2;
+check( 4'b0110 , 1'b0, "bgeu: Not Branching");
+
+
+ALUResult = 1'b0;
+#2;
+check( 4'b0110 , 1'b1 , "bgeu: Branching");
+
 
 
 //R-type instructions from now on, Op will be the same

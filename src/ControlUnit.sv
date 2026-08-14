@@ -7,8 +7,9 @@ logic [1:0] ALUOp;
 Main_Decoder MD( Op , RegWrite , ALUSrc, MemWrite, ResultSrc , Branch , ImmSrc , ALUOp );
 ALU_Decoder  AD( Op[5] , funct7_5 , ALUOp , funct3 , ALU_Control );
 
+always_comb begin
 
-if( Branch == 32'd0)
+if(Branch == 1'b0)
 assign PCSrc = 1'b0;
 else begin
 
@@ -18,15 +19,17 @@ case(funct3)
 
 3'b001: assign PCSrc = Zero ? 1'b0 : 1'b1;        //bne
 
-3'b100: assign PCSrc = ALUResult ? 1'b1 : 1'b0;   //blt
+3'b100: assign PCSrc = ALUResult[0] ? 1'b1 : 1'b0;   //blt
 
-3'b101: assign PCSrc = ALUResult ? 1'b1 : 1'b0;   //bge
+3'b101: assign PCSrc = ALUResult[0] ? 1'b0 : 1'b1;   //bge
 
-3'b110: assign PCSrc = ALUResult ? 1'b1 : 1'b0;   //bltu
+3'b110: assign PCSrc = ALUResult[0] ? 1'b1 : 1'b0;   //bltu
 
-3'b111: assign PCSrc = ALUResult ? 1'b1 : 1'b0;   //bgeu
+3'b111: assign PCSrc = ALUResult[0] ? 1'b0 : 1'b1;   //bgeu
 
 endcase
+
+end
 
 
 end
