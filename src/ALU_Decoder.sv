@@ -7,7 +7,7 @@ always_comb begin
 
 case(ALUOp)
 
-2'b00: ALU_Control = 4'b0000; // lw/sw
+2'b00: ALU_Control = 4'b0000; // laod & S-type instructions
 
 2'b01: begin // Branching instructions
     

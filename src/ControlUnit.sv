@@ -1,5 +1,5 @@
 module CU( input logic [31:0] ALUResult , input logic [6:0] Op , input logic [2:0] funct3 , input logic funct7_5 , Zero ,
- output logic PCSrc, ALUSrc , ResultSrc , MemWrite , RegWrite , output logic [1:0] ImmSrc, output logic [3:0] ALU_Control);
+ output logic PCSrc, ALUSrc , ResultSrc , MemWrite , RegWrite , output logic [2:0] ImmSrc, MemWidth, output logic [3:0] ALU_Control);
 
 logic Branch;
 logic [1:0] ALUOp;

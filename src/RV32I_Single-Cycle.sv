@@ -32,6 +32,7 @@ logic MemWrite;
 logic [3:0] ALUControl;
 logic ALUSrc;
 logic [2:0] ImmSrc;
+logic [1:0] MemWidth;
 logic RegWrite;
 
 
@@ -63,7 +64,7 @@ PCTarget PCTarget_Adder( PC , ImmExt , PCTarget );
 
 Extend ExtendUnit( Instr , ImmSrc , ImmExt );
 
-CU ControlUnit( ALUResult , Instr[6:0] , Instr[14:12] , Instr[30] , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite , ImmSrc , ALUControl );
+CU ControlUnit( ALUResult , Instr[6:0] , Instr[14:12] , Instr[30] , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite , ImmSrc , MemWidth , ALUControl );
 
 
 endmodule
