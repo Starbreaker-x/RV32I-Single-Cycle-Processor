@@ -7,7 +7,7 @@
 always_comb begin
     case(Op)
 
-     7'b0000011: begin // lw , lb , lh , lbu ,lhu
+     7'b0000011: begin // lw , lb , lh , lbu , lhu
 
         RegWrite = 1'b1;
 

@@ -53,6 +53,18 @@ funct3 = 3'b001;
 check( 4'b0000 , 1'b0 , "lh" );
 
 
+//lbu
+funct3 = 3'b100;
+#2;
+check( 4'b0000 , 1'b0 , "lbu" );
+
+
+//lhu
+funct3 = 3'b101;
+#2;
+check( 4'b0000 , 1'b0 , "lhu" );
+
+
 
 //S-type instructions
 
