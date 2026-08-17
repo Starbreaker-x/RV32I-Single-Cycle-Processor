@@ -2,10 +2,11 @@ module DM_tb2();
 
 logic [31:0] A, WD, RD;
 logic clk = 0,WE;
+logic [6:0] Op;
+logic [2:0] funct3;
 
 
-
-DM dut(A,WD,clk,WE,RD);
+DM dut(A,WD,clk,WE,Op,funct3,RD);
 
 
 task check(input logic [31:0] expected, input string testname);
