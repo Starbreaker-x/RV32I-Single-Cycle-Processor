@@ -13,10 +13,12 @@ module RF_tb();
 logic [4:0] A1, A2, A3;
 logic [31:0] WD3;
 logic WE3, clk = 0;
+logic [6:0] Op;
+logic [2:0] funct3;
 logic [31:0] RD1, RD2;
 
 
-Reg_File dut(A1, A2, A3, WD3 , WE3 , clk , RD1 , RD2);
+Reg_File dut(A1, A2, A3, WD3 , WE3 , clk , Op , funct3 , RD1 , RD2);
 
 always #5 clk = ~clk;
 

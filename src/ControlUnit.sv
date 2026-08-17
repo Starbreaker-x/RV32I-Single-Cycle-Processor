@@ -1,5 +1,5 @@
 module CU( input logic [31:0] ALUResult , input logic [6:0] Op , input logic [2:0] funct3 , input logic funct7_5 , Zero ,
- output logic PCSrc, ALUSrc , ResultSrc , MemWrite , RegWrite , output logic [2:0] ImmSrc, MemWidth, output logic [3:0] ALU_Control);
+ output logic PCSrc, ALUSrc , ResultSrc , MemWrite , RegWrite , output logic [2:0] ImmSrc, output logic [3:0] ALU_Control);
 
 logic Branch;
 logic [1:0] ALUOp;
@@ -33,57 +33,6 @@ endcase
 end
 
 
-
-
-/*Encodings of MemWidth for S-type and I-type load instructions*/
-
-/* MemWidth = 00 , 32-bit width
-   
-   MemWidth = 01 , 16-bit width
-
-   MemWidth = 10 ,  8-bit width
-                                   */
-
-if( Op == 7'd3 ) begin // I-type
-
-case( funct3 )
-
-
-3'b000: assign MemWidth = 2'b01; // lb
-
-3'b001: assign MemWidth = 2'b10; // lh
-
-3'b010: assign MemWidth = 2'b00; // lw
-
-3'b100: assign MemWidth = 2'b01; // lbu
-
-3'b101: assign MemWidth = 2'b10; // lhu
-
-default: assign MemWidth = 2'bxx;
-
-endcase
-
-end
-
-
-
-
-
-if( Op == 7'd35 ) begin //S-type
-
-case( funct3 )
-
-3'b000: assign MemWidth = 2'b01; // sb
-
-3'b001: assign MemWidth = 2'b10; // sh
-
-3'b010: assign MemWidth = 2'b00; // sw
-
-default assign MemWidth = 2'bxx;
-
-endcase
-
-end
 
 
 end
