@@ -25,7 +25,7 @@ initial begin
 
 ALUOp = 2'b00;
 #2;
-check(4'b0000, "lw/sw");
+check(4'b0000, "load/store instructions");
 
 
 //Branching Instructions

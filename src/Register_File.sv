@@ -27,15 +27,15 @@ output logic [31:0] RD1, RD2);
                         case( funct3 )
 
 
-                            3'b000: Registers[A3] <= { 24{WD3[7]} , WD3[7:0] }; // lb
+                            3'b000: Registers[A3] <= { {24{WD3[7]}} , WD3[7:0] }; // lb
 
-                            3'b001: Registers[A3] <= { 16{WD3[15]} , WD3[15:0] }; // lh
+                            3'b001: Registers[A3] <= { {16{WD3[15]}} , WD3[15:0] }; // lh
 
                             3'b010: Registers[A3] <= WD3; // lw
 
-                            3'b100: Registers[A3] <= { 24{1'b0} , WD3[7:0] }; // lbu
+                            3'b100: Registers[A3] <= { {24{1'b0}} , WD3[7:0] }; // lbu
 
-                            3'b101: Registers[A3] <= { 16{1'b0} , WD3[15:0] }; // lhu
+                            3'b101: Registers[A3] <= { {16{1'b0}} , WD3[15:0] }; // lhu
 
 
                         endcase
