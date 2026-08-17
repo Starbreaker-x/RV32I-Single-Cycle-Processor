@@ -44,7 +44,7 @@ end
    MemWidth = 10 ,  8-bit width
                                    */
 
-if( Op = 7'd3 ) begin // I-type
+if( Op == 7'd3 ) begin // I-type
 
 case( funct3 )
 
@@ -59,7 +59,7 @@ case( funct3 )
 
 3'b101: assign MemWidth = 2'b10; // lhu
 
-default: 3'bxxx;
+default: assign MemWidth = 2'bxx;
 
 endcase
 
@@ -69,7 +69,7 @@ end
 
 
 
-if( Op = 7'd35 ) begin //S-type
+if( Op == 7'd35 ) begin //S-type
 
 case( funct3 )
 
@@ -79,6 +79,7 @@ case( funct3 )
 
 3'b010: assign MemWidth = 2'b00; // sw
 
+default assign MemWidth = 2'bxx;
 
 endcase
 
