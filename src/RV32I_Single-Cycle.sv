@@ -27,7 +27,7 @@ logic [31:0] RD2;
 /*Control Unit outputs*/
 
 logic PCSrc;
-logic ResultSrc;
+logic [2:0] ResultSrc;
 logic MemWrite;
 logic [3:0] ALUControl;
 logic ALUSrc;
@@ -49,7 +49,7 @@ SrcB_Mux SrcB_Multiplexer( RD2 , ImmExt , ALUSrc , SrcB );
 
 DM DataMemory( ALUResult , WriteData , clk , MemWrite , Instr[6:0] , funct3 , ReadData );
 
-Result_Mux Result_Multiplexer( ALUResult , ReadData , ResultSrc , Result );
+Result_Mux Result_Multiplexer( ALUResult , ReadData , ImmExt, PCPlus4 , PCTarget , ResultSrc , Result );
 
 IM InstructionMemory( PC , Instr );
 

@@ -1,6 +1,6 @@
 
     module Main_Decoder(input logic [6:0] Op,
-    output logic RegWrite, ALUSrc, MemWrite, ResultSrc, Branch,
+    output logic RegWrite, ALUSrc, MemWrite, output logic [2:0] ResultSrc, output logic Branch,
     output logic [2:0] ImmSrc, ALUOp);
 
 
@@ -17,7 +17,7 @@ always_comb begin
 
         MemWrite = 1'b0;
 
-        ResultSrc = 1'b1;
+        ResultSrc = 3'b001;
 
         Branch = 1'b0;
 
@@ -35,7 +35,7 @@ always_comb begin
 
         MemWrite = 1'b0;
 
-        ResultSrc = 1'b0;
+        ResultSrc = 3'b000;
 
         Branch = 1'b0;
 
@@ -59,15 +59,39 @@ always_comb begin
 
 
     7'b0110111: begin //lui
+ 
+        RegWrite = 1'b1;
 
+        ImmSrc = 3'b100; 
 
+        ALUSrc = 1'b1; 
+
+        MemWrite = 1'b0;
+
+        ResultSrc = 3'b011;
+
+        Branch = 1'b0;
+
+        ALUOp = 2'bxx; 
 
     end
 
     
     7'b0010111: begin //auipc
 
+       RegWrite = 1'b1;
 
+        ImmSrc = 3'b100; 
+
+        ALUSrc = 1'b1; 
+
+        MemWrite = 1'b0;
+
+        ResultSrc = 3'b100;
+
+        Branch = 1'b0;
+
+        ALUOp = 2'bxx; 
 
     end
 
@@ -83,7 +107,7 @@ always_comb begin
 
         MemWrite = 1'b1; 
 
-        ResultSrc = 1'bx; 
+        ResultSrc = 3'bxxx; 
 
         Branch = 1'b0; 
 
@@ -101,7 +125,7 @@ always_comb begin
 
         MemWrite = 1'b0; 
 
-        ResultSrc = 1'b0; 
+        ResultSrc = 3'b000; 
 
         Branch = 1'b0; 
 
@@ -119,7 +143,7 @@ always_comb begin
 
         MemWrite = 1'b0; 
 
-        ResultSrc = 1'bx; 
+        ResultSrc = 3'bxxx; 
 
         Branch = 1'b1; 
 
@@ -136,7 +160,7 @@ always_comb begin
 
         MemWrite = 1'bx; 
 
-        ResultSrc = 1'bx; 
+        ResultSrc = 3'bxxx; 
 
         Branch = 1'bx; 
 

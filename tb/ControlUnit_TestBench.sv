@@ -6,9 +6,9 @@ module CU_tb();
 
 
 
-logic [6:0] Op;  logic [2:0] funct3;  logic funct7_5 , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite;  logic [2:0] ImmSrc;  logic [3:0] ALU_Control;
+logic [6:0] Op;  logic [2:0] funct3;  logic funct7_5 , Zero , PCSrc , ALUSrc , MemWrite , RegWrite;  logic [2:0] ImmSrc;  logic [3:0] ALU_Control;
 logic [31:0] ALUResult;
-
+logic [2:0] ResultSrc;
 
 
 CU dut( ALUResult , Op , funct3 , funct7_5 , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite , ImmSrc , ALU_Control );

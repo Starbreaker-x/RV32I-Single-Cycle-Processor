@@ -2,9 +2,10 @@ module MD_tb();
 
 
  logic [6:0] Op;
- logic RegWrite, ALUSrc, MemWrite, ResultSrc, Branch;
- logic [2:0] ImmSrc;
+ logic RegWrite, ALUSrc, MemWrite, Branch;
+ logic [2:0] ImmSrc, ResultSrc;
  logic [1:0] ALUOp;
+ 
 
 
  
