@@ -13,7 +13,7 @@ module MD_tb();
 
 
  task check( input logic [6:0] Op,
-  input logic RegWrite_exp, ALUSrc_exp, MemWrite_exp, ResultSrc_exp, Branch_exp, 
+  input logic RegWrite_exp, ALUSrc_exp, MemWrite_exp, input logic [2:0] ResultSrc_exp, input logic Branch_exp, 
   input logic [2:0] ImmSrc_exp, ALUOp_exp, 
   input string testname);
 
@@ -82,6 +82,16 @@ check( 7'b1100011 , 1'b0 , 1'b0 , 1'b0 , 1'bx , 1'b1 , 3'b010 , 2'b01 , "B-Type"
 Op = 7'b00010011;//I-type immediate instructions
 #5;
 check( 7'b00010011 , 1'b1 , 1'b1, 1'b0 , 1'b0 , 1'b0 , 3'b000 , 2'b10 , "I-type immediate");
+
+//U-type instructions
+
+Op = 7'b0110111; // lui
+#5;
+check( 7'b0110111 , 1'b1 , 1'b1 , 1'b0 , 3'b001 , 1'b0 , 3'b100 , 2'bxx , "lui" );
+
+Op = 7'b0010111; //auipc
+#5;
+check( 7'b0110111 , 1'b1 , 1'b1 , 1'b0 , 3'b100 , 1'b0 , 3'b100 , 2'bxx , "auipc" );
 
 Op = 7'b1111111;//default test code
 #5;

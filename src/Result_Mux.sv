@@ -18,12 +18,6 @@ ResultSrc Encodings
 
 */
 
-always_comb begin
-
-if(ResultSrc[2] == 1'b1)
-Result = PCTarget; 
-else
-    Result = ResultSrc[1] ? ( ResultSrc[0] ? ImmExt : PCPlus4 ) : ( ResultSrc[0] ? RD : ALUResult );
-end
+ assign Result = ResultSrc[2] ? PCTarget : (ResultSrc[1] ? ( ResultSrc[0] ? ImmExt : PCPlus4 ) : ( ResultSrc[0] ? RD : ALUResult ));
 
 endmodule
