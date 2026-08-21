@@ -9,11 +9,13 @@ ALU_Decoder  AD( Op[5] , funct7_5 , ALUOp , funct3 , ALU_Control );
 
 always_comb begin
 
-//Encodings of PCSrc for B-type instructions    
+//Encodings of PCSrc for B-type instructions, jal , and Jalr
 if(Branch == 1'b0)
 assign PCSrc = 1'b0;
 else begin
 
+
+if( Op == 99 )    begin
 case(funct3)
 
 3'b000: assign PCSrc = Zero ? 1'b1 : 1'b0;        //beq
@@ -30,6 +32,9 @@ case(funct3)
 
 endcase
 
+end
+else
+    assign PCSrc = 1'b1;
 end
 
 

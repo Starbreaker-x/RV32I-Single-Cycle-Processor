@@ -46,14 +46,38 @@ always_comb begin
 
     7'b1100111: begin // jalr
 
-     
+        RegWrite = 1'b1;
+
+        ImmSrc = 3'b000; 
+
+        ALUSrc = 1'b1; 
+
+        MemWrite = 1'b0;
+
+        ResultSrc = 3'b010;
+
+        Branch = 1'b1;
+
+        ALUOp = 2'bxx; 
 
     end
 
 
     7'b1101111: begin //jal
 
+        RegWrite = 1'b1;
 
+        ImmSrc = 3'b011; 
+
+        ALUSrc = 1'b1; 
+
+        MemWrite = 1'b0;
+
+        ResultSrc = 3'b010;
+
+        Branch = 1'b1;
+
+        ALUOp = 2'bxx; 
 
     end
 
