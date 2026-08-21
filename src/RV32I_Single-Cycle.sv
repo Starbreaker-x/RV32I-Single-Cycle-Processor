@@ -19,6 +19,8 @@ logic Zero;
 
 logic [31:0] RD2;
 
+logic [31:0] PCT_Mux_output;
+
 
 
 
@@ -33,6 +35,7 @@ logic [3:0] ALUControl;
 logic ALUSrc;
 logic [2:0] ImmSrc;
 logic RegWrite;
+logic PCTSrc;
 
 
 assign WriteData = RD2;
@@ -59,11 +62,12 @@ PC_Mux PC_Multiplexer( PCPlus4 , PCTarget , PCSrc , PCNext );
 
 PCPlus4 PCPlus4_Adder( PC , PCPlus4 );
 
-PCTarget PCTarget_Adder( PC , ImmExt , PCTarget );
+PCTarget PCTarget_Adder( PCT_Mux_output , ImmExt , PCTarget );
 
 Extend ExtendUnit( Instr , ImmSrc , ImmExt );
 
 CU ControlUnit( ALUResult , Instr[6:0] , Instr[14:12] , Instr[30] , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite , ImmSrc  , ALUControl );
 
+PCT_Mux PCTarger_Multiplexer( Instr[19:15] , PC , PCTSrc , PCT_Mux_output );
 
 endmodule
