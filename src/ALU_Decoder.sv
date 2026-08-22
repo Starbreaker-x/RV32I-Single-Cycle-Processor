@@ -67,6 +67,8 @@ endcase
 
 end
 
+default ALU_Control = 4'bxxxx;
+
 endcase
 
 end

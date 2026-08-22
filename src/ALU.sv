@@ -21,7 +21,8 @@ module ALU(input logic [31:0] A , B, input logic  [3:0] ALU_Control ,
     /*SRL*/  4'b1000: Result = A >> B[4:0];
     /*SRA*/  4'b1001: Result = $signed(A) >>> B[4:0];
     
-    
+     default Result = 32'hxxxx_xxxx;
+     
      endcase
      Zero = (Result == 32'd0);
  
