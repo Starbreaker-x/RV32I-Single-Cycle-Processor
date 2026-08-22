@@ -297,6 +297,27 @@ funct3 = 3'b011;
 check( 4'b0110, 1'b0 , "sltu" );
 
 
+//lui
+Op = 7'b0110111;
+#2;
+check( 4'bxxxx , 1'b0 , "lui" );
+
+//auipc
+Op = 7'b0010111;
+#2;
+check( 4'bxxxx , 1'b0 , "auipc");
+
+//jal
+Op = 7'b1101111;
+#2;
+check( 4'bxxxx , 1'b1 , "jal" );
+
+//jalr
+Op = 7'b1100111; funct3 =  3'b000;
+#2;
+check( 4'bxxxx , 1'b1 , "jalr" );
+
+
 $display("All tests passed");
 $finish;
   end
