@@ -93,7 +93,7 @@ andi x7, x5, 0xFFF;
 
 
 #jalr
-jalr x8, x0 , 16;
+jalr x8, x0 , 144;
 
 
 #end of Immediate instructions
@@ -112,7 +112,7 @@ auipc x9, 0x001;
 
 #jal
 
-jal x10, 160;
+jal x10, 156;
 
 # jal will jump to the instruction after this one
 jal x10, 0;
@@ -162,7 +162,7 @@ lw x16, 12(x0);
 
 # B-type instructions
 
-#next PC = 200
+#next PC = 196
 
 #beq: Not Branching
 
@@ -170,7 +170,7 @@ beq x0, x1 , 0;
 
 #beq: Branching
 
-beq x1, x1, 212;
+beq x1, x1, 208;
 
 add x1, x1, x1;
 
@@ -180,7 +180,7 @@ bne x1, x1, 4;
 
 #bne: Branching
 
-bne x0, x1, 228;
+bne x0, x1, 224;
 
 add x1, x1, x1;
 
@@ -193,7 +193,7 @@ blt x0, x5, 32;
 
 #blt: Branching
 
-blt x5, x0 , 236;;
+blt x5, x0 , 232;;
 
 #bge Not Branching
 
@@ -201,7 +201,7 @@ bge x5, x0, 44;
 
 #bge: Branching
 
-bge x0, x5, 244;
+bge x0, x5, 240;
 
 #bltu: Not Branching
 
@@ -209,7 +209,7 @@ bltu x5, x0, 50;
 
 #bltu: Brancing
 
-bltu x0, x5, 252;
+bltu x0, x5, 248;
 
 #bgeu: Not Branching
 
@@ -217,7 +217,7 @@ bgeu x0, x5, 6;
 
 #bgeu: Branching
 
-bgeu x5, x0, 260;
+bgeu x5, x0, 256;
 
 
 
