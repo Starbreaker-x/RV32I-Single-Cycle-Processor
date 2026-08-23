@@ -64,30 +64,69 @@ sltiu x22, x4, -15;
 sltiu x22, x4, 0;
 
 #xori
+xori x23, x2, 15;
 
 #slli
+slli x24, x1, 5;
 
 #srli
 
+#sign extendsion
+srli x17, x5, 2;
+
+#regular
+srli x18, x3, 2;
+
+
+
 #srai
 
+#sign extension
+srai x19, x5, 2;
+
+#regular
+srai x20 , x3 , 2;
+
+
 #andi
+andi x7, x5, 0xFFF;
+
 
 #jalr
+jalr x8, x0 , 16;
 
 
 #end of Immediate instructions
 
+srai x19, x5, 2;
+
+srai x19, x5, 2;
+
+srai x19, x5, 2;
+
+#PC will land on the next instruction following jalr
 
 #auipc
 
+auipc x9, 0x001;
 
 #jal
 
+jal x10, 160;
+
+# jal will jump to the instruction after this one
+jal x10, 0;
+
 #S-type instructions
 
+lui x11, 0xFFFFF;
+ori x11, x11, 0xFFF;
 
+sw x11, 4(x0);
 
+sh x11, 8(x0);
+
+sb x11, 12(x0);
 
 
 
@@ -100,11 +139,23 @@ sltiu x22, x4, 0;
 
 #lb
 
+lb x12, 12(x0);
+
 #lh
+
+lh x13, 12(x0);
 
 #lbu
 
+lbu x14, 12(x0);
+
 #lhu
+
+lhu x15, 12(x0);
+
+#lw
+
+lw x16, 12(x0);
 
 #end of Load instructions
 
@@ -165,32 +216,5 @@ sltiu x22, x4, 0;
 
 
 # end of B-type instructions
-
-
-
-
-
-
-
-
-
-
-
-
-#sw S Type
-
-sw x16, 24(x0);
-
-#beq
-
-#not equal: if they were there would be an infinite loop
-beq x1, x2, -4;
-
-#eqal so we branch, target is 8 so we skip over an instruction
-beq x1, x1, 8;
-
-add x21, x6, x4;
-
-sub x21, x6, x4;
 
 
