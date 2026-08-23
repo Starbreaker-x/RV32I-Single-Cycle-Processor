@@ -162,59 +162,65 @@ lw x16, 12(x0);
 
 # B-type instructions
 
-#beq
+#next PC = 200
+
+#beq: Not Branching
+
+beq x0, x1 , 0;
+
+#beq: Branching
+
+beq x1, x1, 212;
+
+add x1, x1, x1;
+
+#bne: Not Branching
+
+bne x1, x1, 4;
+
+#bne: Branching
+
+bne x0, x1, 228;
+
+add x1, x1, x1;
+
+add x1, x1, x1;
+
+#blt: Not Branching
+
+blt x0, x5, 32;
 
 
+#blt: Branching
 
-#beq
+blt x5, x0 , 236;;
 
+#bge Not Branching
 
-#bne
+bge x5, x0, 44;
 
+#bge: Branching
 
-#bne
+bge x0, x5, 244;
 
+#bltu: Not Branching
 
-#blt
+bltu x5, x0, 50;
 
+#bltu: Brancing
 
-#blt
+bltu x0, x5, 252;
 
+#bgeu: Not Branching
 
-#bge
+bgeu x0, x5, 6;
 
+#bgeu: Branching
 
-#bge
-
-
-#bltu
-
-
-#bltu
-
-
-#bgeu
-
-
-#bgeu
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+bgeu x5, x0, 260;
 
 
 
 # end of B-type instructions
 
-
+add x0, x0, x0;
