@@ -45,135 +45,246 @@ check_PC(32'd0);
 
 @(posedge clk);
 #2;
-check_r( 32'd4 , 32'd1 , "lw" );
+check_r( 32'd4 , 32'd1 , "addi" );
 check_PC(32'd4); 
 
 @(negedge clk);
 
 @(posedge clk);
 #2;;
-check_r( 32'd15 , 32'd2 , "lw" );
+check_r( 32'd15 , 32'd2 , "addi" );
 check_PC(32'd8); 
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
-check_r( 32'd8 , 32'd3 , "lw" );
+check_r( 32'd8 , 32'd3 , "addi" );
 check_PC(32'd12); 
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
-check_r( 32'd2 , 32'd4 , "lw" );
+check_r( 32'd2 , 32'd4 , "addi" );
 check_PC(32'd16); 
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
-check_r( 32'd4026531840 , 32'd5 , "lw" );
+check_r( 32'hF0000_000 , 32'd5 , "lui" );
 check_PC(32'd20); 
 
 @(negedge clk);
 
-//R- type
 
 @(posedge clk);
 #2;
-check_r( 32'd7 , 32'd6 , "lw" );
+check_r( 32'd4026531840 , 32'd5 , "ori" );
 check_PC(32'd24); 
+
+
+@(negedge clk);
+
+
+@(posedge clk);
+#2;
+check_r( 32'd7 , 32'd6 , "addi" );
+check_PC(32'd28); 
+
+
+//R-type
+
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
 check_r( 32'd19 , 32'd7 , "add" );
-check_PC(32'd28); 
-
-@(negedge clk);
-
-@(posedge clk);
-#2;
-check_r( 32'd11 , 32'd8 , "sub" );
 check_PC(32'd32); 
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
-check_r( 32'd7 , 32'd9 , "and" );
+check_r( 32'd11 , 32'd8 , "sub" );
 check_PC(32'd36); 
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'd7 , 32'd9 , "and" );
+check_PC(32'd40); 
 @(negedge clk);
 
 @(posedge clk);
 #2;
 check_r( 32'd6 , 32'd10 , "or" );
-check_PC(32'd40);
+check_PC(32'd44);
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
 check_r( 32'd8 , 32'd11 , "xor" );
-check_PC(32'd44); 
+check_PC(32'd48); 
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
 check_r( 32'd1 , 32'd12 , "slt" );
-check_PC(32'd48);
+check_PC(32'd52);
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
 check_r( 32'd0 , 32'd13, "slt" );
-check_PC(32'd52); 
-
-@(negedge clk);
-
-@(posedge clk);
-#2;
-check_r( 32'd0 , 32'd14 , "sltu" );
 check_PC(32'd56); 
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
-check_r( 32'd1 , 32'd15 , "sltu" );
+check_r( 32'd0 , 32'd14 , "sltu" );
 check_PC(32'd60); 
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
-check_r( 32'd16 , 32'd16 , "sll" );
+check_r( 32'd1 , 32'd15 , "sltu" );
 check_PC(32'd64); 
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
-check_r( 32'h3C00_0000 , 32'd17 , "srl" );
-check_PC(32'd68);
+check_r( 32'd16 , 32'd16 , "sll" );
+check_PC(32'd68); 
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
-check_r( 32'd2 , 32'd18 , "srl" );
+check_r( 32'h3C00_0000 , 32'd17 , "srl" );
 check_PC(32'd72);
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
+check_r( 32'd2 , 32'd18 , "srl" );
+check_PC(32'd76);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
 check_r( 32'hFC00_0000 , 32'd19 , "sra" );
-check_PC(32'd76); 
+check_PC(32'd80); 
+
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'd2 , 32'd20 , "sra" );
+check_PC(32'd84);
+
+
+//Immediate instructions
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'd0 , 32'd21 , "slti");
+check_PC(32'd88);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'd0 , 32'd21 , "slti");
+check_PC(32'd92);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'd0 , 32'd22 , "sltiu");
+check_PC(32'd96);
+
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'd0 , 32'd21 , "sltiu");
+check_PC(32'd100);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @(negedge clk);
 

@@ -54,14 +54,14 @@ sra x20, x3, x4;
 
 
 #slti
+slti x21, x5, -15;
+
 slti x21, x4, -15;
 
-slti x21, x4, 1;
-
 #sltiu
-sltiu x22, x4, -15;
+sltiu x22, x5, 0;
 
-sltiu x22, x4, 0;
+sltiu x22, x4, 7;
 
 #xori
 xori x23, x2, 15;
