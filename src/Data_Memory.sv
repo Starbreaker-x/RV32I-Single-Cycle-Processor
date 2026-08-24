@@ -10,9 +10,6 @@ module DM(input logic [31:0] A, WD, input logic clk, WE, input logic [6:0] Op, i
 
 logic [7:0] mem [0:1023];
 
-initial begin
-$readmemh("DataMemory_Initialization.hex", mem);
-end
 
 always_ff @( posedge clk) begin
      if(WE) begin
