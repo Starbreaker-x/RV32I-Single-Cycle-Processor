@@ -325,7 +325,7 @@ else begin
 $display( " Address 4 containes: %h , expected: %h ", {dut.DataMemory.mem[7], dut.DataMemory.mem[6], dut.DataMemory.mem[5], dut.DataMemory.mem[4]} , 32'hFFFF_FFFF );
 $finish;
 end
-check_PC(32'd168;)
+check_PC(32'd168);
 
 @(negedge clk);
 
