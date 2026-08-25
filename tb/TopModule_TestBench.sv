@@ -202,21 +202,21 @@ check_PC(32'd84);
 
 @(posedge clk);
 #2;
-check_r( 32'd0 , 32'd21 , "slti");
+check_r( 32'd1 , 32'd21 , "slti" );
 check_PC(32'd88);
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
-check_r( 32'd0 , 32'd21 , "slti");
+check_r( 32'd0 , 32'd21 , "slti" );
 check_PC(32'd92);
 
 @(negedge clk);
 
 @(posedge clk);
 #2;
-check_r( 32'd0 , 32'd22 , "sltiu");
+check_r( 32'd0 , 32'd22 , "sltiu" );
 check_PC(32'd96);
 
 
@@ -224,114 +224,267 @@ check_PC(32'd96);
 
 @(posedge clk);
 #2;
-check_r( 32'd0 , 32'd21 , "sltiu");
+check_r( 32'd1 , 32'd22 , "sltiu" );
 check_PC(32'd100);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @(negedge clk);
 
-//sw
 @(posedge clk);
 #2;
-check_r( 32'd2 , 32'd20 , "sra" );
-check_PC(32'd80);
+check_r( 32'd0 , 32'd23 , "xori" );
+check_PC(32'd104);
 
 @(negedge clk);
 
-//beq no branch
-@(posedge clk );
+@(posedge clk);
 #2;
-if( {dut.DataMemory.mem[27], dut.DataMemory.mem[26], dut.DataMemory.mem[25], dut.DataMemory.mem[24]} === 32'd16 )
+check_r( 32'd128 , 32'd24, "slli" );
+check_PC(32'd108);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'h3C00_0000 , 32'd17 , "srli" );
+check_PC(32'd112);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'd2 , 32'd18 , "srli" );
+check_PC(32'd116);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'hFC00_0000 , 32'd19 , "srai" );
+check_PC(32'd120); 
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'd2 , 32'd20 , "srai" );
+check_PC(32'd124);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'hF0000_000 , 32'd5 , "andi" );
+check_PC(32'd128);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'd132, 32'd8 , "jalr");
+check_PC(32'd144);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'd145, 32'd9 , "auipc");
+check_PC(32'd148);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'd152 , 32'd10 , "jal" );
+check_PC(32'd156);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'hFFFFF_000 , 32'd11 , "lui");
+check_PC(32'd160);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'hFFFF_FFFF , 32'd11 , "ori");
+check_PC(32'd164);
+
+
+//S-type instructions
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+if( {dut.DataMemory.mem[7], dut.DataMemory.mem[6], dut.DataMemory.mem[5], dut.DataMemory.mem[4]} === 32'hFFFF_FFFF )
 $display( "sw instruction is functional ");
 else begin
-$display( " Address 24 containes: %d , expected: %d ", {dut.DataMemory.mem[27], dut.DataMemory.mem[26], dut.DataMemory.mem[25], dut.DataMemory.mem[24]} , 32'd16 );
+$display( " Address 4 containes: %h , expected: %h ", {dut.DataMemory.mem[7], dut.DataMemory.mem[6], dut.DataMemory.mem[5], dut.DataMemory.mem[4]} , 32'hFFFF_FFFF );
 $finish;
 end
-check_PC(32'd84);
-
-@(negedge clk );
-
-//beq that does branch, offset 8 so next PC should be 96
-@(posedge clk );
-#2;
-check_PC(32'd88);
+check_PC(32'd168;)
 
 @(negedge clk);
 
-//sub instruction skipped the add instruction
 @(posedge clk);
 #2;
-check_PC(32'd96); 
+if( {dut.DataMemory.mem[11], dut.DataMemory.mem[10], dut.DataMemory.mem[9], dut.DataMemory.mem[8]} === 32'hxxxx_FFFF )
+$display( "sh instruction is functional ");
+else begin
+$display( " Address 8 containes: %h , expected: %h ", {dut.DataMemory.mem[11], dut.DataMemory.mem[10], dut.DataMemory.mem[9], dut.DataMemory.mem[8]} , 32'hxxxx_FFFF );
+$finish;
+end
+check_PC(32'd172);
 
 @(negedge clk);
+
 @(posedge clk);
 #2;
-check_r( 32'd5 , 32'd21 , "sub" );
-
-$display( "All tests passed " );
+if( {dut.DataMemory.mem[15], dut.DataMemory.mem[14], dut.DataMemory.mem[13], dut.DataMemory.mem[12]} === 32'hxxxx_xxFF )
+$display( "sb instruction is functional ");
+else begin
+$display( " Address 12 containes: %h , expected: %h ", {dut.DataMemory.mem[15], dut.DataMemory.mem[14], dut.DataMemory.mem[13], dut.DataMemory.mem[12]} , 32'hxxxx_xxFF );
 $finish;
-
 end
+check_PC(32'd176);
+
+//Load instrucitions
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'hFFFF_FFFF , 32'd12 , "lb" );
+check_PC(32'd180);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'hxxxx_xxFF , 32'd13 , "lh" );
+check_PC(32'd184);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'h0000_00FF , 32'd14 , "lbu" );
+check_PC( 32'd188);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'h0000_xxFF , 32'd15 , "lhu" );
+check_PC(32'd192);
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'hxxxx_xxFF , 32'd16 , "lw" );
+check_PC(32'd196);
+
+//B-type instructions
 
 
+//beq: not branch
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_PC(32'd200);
+
+//beq: branching
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_PC(32'd208);
+
+//bne: not branching
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_PC(32'd212);
+
+//bne: branching
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_PC(32'd224);
+
+//blt: not branching
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_PC(32'd228);
+
+//blt: branching
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_PC(32'd232);
+
+//bge: not branching
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_PC(32'd236);
+
+//bge: branching
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_PC(32'd240);
+
+//bltu: not branching
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_PC(32'd244);
+
+//bltu: branching
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_PC(32'd248);
+
+//bgeu: not branching
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_PC(32'd252);
+
+//bgeu: branching
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_PC(32'd256);
+
+//end of B-type instructions
+
+@(negedge clk);
+
+@(posedge clk);
+#2;
+check_r( 32'd0 , 32'd0 , "add" );
+
+ $display( "All tests passed");
+ $finish;
 
 
 
