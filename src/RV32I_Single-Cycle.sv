@@ -66,7 +66,7 @@ PCTarget PCTarget_Adder( PCT_Mux_output , ImmExt , PCTarget );
 
 Extend ExtendUnit( Instr , ImmSrc , ImmExt );
 
-CU ControlUnit( ALUResult , Instr[6:0] , Instr[14:12] , Instr[30] , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite , ImmSrc  , ALUControl );
+CU ControlUnit( ALUResult , Instr[6:0] , Instr[14:12] , Instr[30] , Zero , PCSrc , ALUSrc , ResultSrc , MemWrite , RegWrite , ImmSrc  , ALUControl , PCTSrc);
 
 PCT_Mux PCTarger_Multiplexer( Instr[19:15] , PC , PCTSrc , PCT_Mux_output );
 
