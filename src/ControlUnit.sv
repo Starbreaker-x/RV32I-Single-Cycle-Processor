@@ -1,5 +1,5 @@
 module CU( input logic [31:0] ALUResult , input logic [6:0] Op , input logic [2:0] funct3 , input logic funct7_5 , Zero ,
- output logic PCSrc, ALUSrc , output logic [2:0] ResultSrc , output logic MemWrite , RegWrite , output logic [2:0] ImmSrc, output logic [3:0] ALU_Control , output logic [1:0] PCTSrc);
+ output logic PCSrc, ALUSrc , output logic [2:0] ResultSrc , output logic MemWrite , RegWrite , output logic [2:0] ImmSrc, output logic [3:0] ALU_Control , output logic PCTSrc);
 
 logic Branch;
 logic [1:0] ALUOp;
@@ -38,14 +38,9 @@ else
 end
 
 if( Op == 32'd103)
- PCTSrc = 2'b00;
-
- 
-if( Op == 32'd111)
- PCTSrc = 2'b10;
-
- if( Op != 32'd111 && Op != 32'd103)
- PCTSrc = 2'b01;
+ PCTSrc = 1'b0;
+ else
+ PCTSrc = 1'b0;
 end
 
 

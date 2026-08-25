@@ -112,7 +112,7 @@ auipc x9, 0x001;
 
 #jal
 
-jal x10, 156;
+jal x10, 8;
 
 # jal will jump to the instruction after this one
 jal x10, 0;
