@@ -46,11 +46,11 @@ assign WriteData = RD2;
 
 ALU ArithmeticLogicUnit( SrcA , SrcB , ALUControl , ALUResult , Zero ); 
 
-Reg_File RegisterFile( Instr[19:15] , Instr[24:20] , Instr[11:7] , Result , RegWrite , clk , Instr[6:0] , funct3 , SrcA , RD2 );
+Reg_File RegisterFile( Instr[19:15] , Instr[24:20] , Instr[11:7] , Result , RegWrite , clk , Instr[6:0] , Instr[14:12] , SrcA , RD2 );
 
 SrcB_Mux SrcB_Multiplexer( RD2 , ImmExt , ALUSrc , SrcB );
 
-DM DataMemory( ALUResult , WriteData , clk , MemWrite , Instr[6:0] , funct3 , ReadData );
+DM DataMemory( ALUResult , WriteData , clk , MemWrite , Instr[6:0] , Instr[14:12] , ReadData );
 
 Result_Mux Result_Multiplexer( ALUResult , ReadData , ImmExt, PCPlus4 , PCTarget , ResultSrc , Result );
 
