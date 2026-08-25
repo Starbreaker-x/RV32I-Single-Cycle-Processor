@@ -35,7 +35,7 @@ logic [3:0] ALUControl;
 logic ALUSrc;
 logic [2:0] ImmSrc;
 logic RegWrite;
-logic PCTSrc;
+logic [1:0] PCTSrc;
 
 
 assign WriteData = RD2;

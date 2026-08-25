@@ -288,7 +288,7 @@ check_PC(32'd144);
 
 @(posedge clk);
 #2;
-check_r( 32'd145, 32'd9 , "auipc");
+check_r( 32'd4240, 32'd9 , "auipc");
 check_PC(32'd148);
 
 @(negedge clk);
