@@ -481,7 +481,7 @@ check_PC(32'd256);
 
 @(posedge clk);
 #2;
-check_r( 32'd0 , 32'd0 , "add" );
+check_r( 32'dx , 32'd0 , "add" );
 
  $display( "All tests passed");
  $finish;

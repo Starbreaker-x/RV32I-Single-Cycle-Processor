@@ -40,7 +40,7 @@ end
 if( Op == 32'd103)
  PCTSrc = 1'b0;
  else
- PCTSrc = 1'b0;
+ PCTSrc = 1'b1;
 end
 
 
