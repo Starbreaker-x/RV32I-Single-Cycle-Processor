@@ -11,30 +11,30 @@ always_comb begin
 
 //Encodings of PCSrc for B-type instructions, jal , and Jalr
 if(Branch == 1'b0)
-assign PCSrc = 1'b0;
+  PCSrc = 1'b0;
 else begin
 
 
 if( Op == 99 )    begin
 case(funct3)
 
-3'b000: assign PCSrc = Zero ? 1'b1 : 1'b0;        //beq
+3'b000:  PCSrc = Zero ? 1'b1 : 1'b0;        //beq
 
-3'b001: assign PCSrc = Zero ? 1'b0 : 1'b1;        //bne
+3'b001:  PCSrc = Zero ? 1'b0 : 1'b1;        //bne
 
-3'b100: assign PCSrc = ALUResult[0] ? 1'b1 : 1'b0;   //blt
+3'b100:  PCSrc = ALUResult[0] ? 1'b1 : 1'b0;   //blt
 
-3'b101: assign PCSrc = ALUResult[0] ? 1'b0 : 1'b1;   //bge
+3'b101:  PCSrc = ALUResult[0] ? 1'b0 : 1'b1;   //bge
 
-3'b110: assign PCSrc = ALUResult[0] ? 1'b1 : 1'b0;   //bltu
+3'b110:  PCSrc = ALUResult[0] ? 1'b1 : 1'b0;   //bltu
 
-3'b111: assign PCSrc = ALUResult[0] ? 1'b0 : 1'b1;   //bgeu
+3'b111:  PCSrc = ALUResult[0] ? 1'b0 : 1'b1;   //bgeu
 
 endcase
 
 end
 else
-    assign PCSrc = 1'b1;
+    PCSrc = 1'b1;
 end
 
 if( Op == 32'd103)
