@@ -7,16 +7,17 @@ Implemented in SystemVerilog, simulated and verified in Vivado
 ## Implemented Features
 
 ### Suported Instructions
-- lw
-- sw
-- beq
-- All R-Type Instructions ( add , sub , and , or , xor , slt , sltu , sll , srl , sra )
-
+- I-type: lb , lh , lw , lbu , lhu , addi , slli , slti , sltiu , xori , srli , srai , ori , andi , jalr
+- S-type: sb , sh , sw
+- B-type: beq , bne , blt , bge , bltu , bgeu
+- R-type: add , sub , and , or , xor , slt , sltu , sll , srl , sra 
+- U-type: lui , auipc
+- J-type: jal
 
 ### Architecture
 - **ALU**: Supports all 10 R-Type Instructions
 - **Register File**: Contains 32 32-bit registers with x0 being hardwired to 0
-- **Extend Unit**: Currently supports 12-bit I and S type and 13-bit B type signed immediates 
+- **Extend Unit**: Currently supports 12-bit I and S-type, 13-bit B-type, 20-bit U-type, and 21-bit J-type signed immediates 
 - **Data / Instruction Memory**: Can store 256, 32 bit values, byte addressed using little endianness
 - **PC**: Clock driven, contains a reset input, subsequent address determined by Plus4 and Target Adders
 - **Control Unit**: Made up of the Main and ALU Decoders, outputs all the control signals
@@ -26,7 +27,8 @@ Implemented in SystemVerilog, simulated and verified in Vivado
 - Further verified via the waveform viewer by running behavioral simulations in Vivado
 
 **Schematic of the top module**
-<img width="777" height="272" alt="Screenshot 2026-08-03 180355" src="https://github.com/user-attachments/assets/eddc5ade-e61e-463a-96e3-fd58839b30db" />
+<img width="721" height="167" alt="image" src="https://github.com/user-attachments/assets/21f63503-6b8b-4bc5-a43e-0523b6f02242" />
+
 
 ## Tools
 - Implemented in SystemVerilog
@@ -35,8 +37,8 @@ Implemented in SystemVerilog, simulated and verified in Vivado
 - I plan on using the Diligent Arty A7 100-T FPGA for further testing
 
 ## How to run
-- Contains all RTL modules
-- Contains all testbenches and hex files to initialize modules such as Data & Instruction Memory
+- src directory contains all RTL modules
+- tb directory contains all testbenches and hex files to initialize modules such as Data & Instruction Memory
 - To run in Vivado set RV32I_Single-Cycle.sv and TopModule_TestBench.sv as top for design and simulation sources respectively and run a behavioral simulation
 
 
@@ -55,10 +57,6 @@ Implemented in SystemVerilog, simulated and verified in Vivado
 **sw and beq instructions**
 <img width="417" height="240" alt="image" src="https://github.com/user-attachments/assets/11d2bbbf-72af-47d5-8e32-a63ff66983f7" />
 
-
-## Limitations
-- Currently I-Type Immediate instructions, U & J Type, as well as additional branch instructions are not yet implemented
-- When the I-Type immediate instructions are implemented it will eliminate the need to initialize Data Memory
 
 
 ## Motivation & Goals
