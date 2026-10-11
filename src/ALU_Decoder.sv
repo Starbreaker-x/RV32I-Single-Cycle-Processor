@@ -25,6 +25,8 @@ case(ALUOp)
 
     3'b111: ALU_Control = 4'b0110; //bgeu
 
+    default ALU_Control = 4'bxxxx; 
+
     endcase
     
 end
@@ -62,6 +64,8 @@ if(funct7_5)
 else
     ALU_Control = 4'b1000; //SRL
 end
+
+default ALU_Control = 4'bxxxx;
 
 endcase
 

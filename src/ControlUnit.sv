@@ -30,6 +30,8 @@ case(funct3)
 
 3'b111:  PCSrc = ALUResult[0] ? 1'b0 : 1'b1;   //bgeu
 
+default PCSrc = 1'bx;
+
 endcase
 
 end
