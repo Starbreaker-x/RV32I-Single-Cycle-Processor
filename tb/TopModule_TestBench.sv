@@ -319,10 +319,10 @@ check_PC(32'd164);
 
 @(posedge clk);
 #2;
-if( {dut.DataMemory.mem[7], dut.DataMemory.mem[6], dut.DataMemory.mem[5], dut.DataMemory.mem[4]} === 32'hFFFF_FFFF )
+if(dut.DataMemory.mem[4] === 32'hFFFF_FFFF )
 $display( "sw instruction is functional ");
 else begin
-$display( " Address 4 containes: %h , expected: %h ", {dut.DataMemory.mem[7], dut.DataMemory.mem[6], dut.DataMemory.mem[5], dut.DataMemory.mem[4]} , 32'hFFFF_FFFF );
+$display( " Address 4 containes: %h , expected: %h ", dut.DataMemory.mem[4] , 32'hFFFF_FFFF );
 $finish;
 end
 check_PC(32'd168);
@@ -331,10 +331,10 @@ check_PC(32'd168);
 
 @(posedge clk);
 #2;
-if( {dut.DataMemory.mem[11], dut.DataMemory.mem[10], dut.DataMemory.mem[9], dut.DataMemory.mem[8]} === 32'hxxxx_FFFF )
+if( dut.DataMemory.mem[8] === 32'hxxxx_FFFF )
 $display( "sh instruction is functional ");
 else begin
-$display( " Address 8 containes: %h , expected: %h ", {dut.DataMemory.mem[11], dut.DataMemory.mem[10], dut.DataMemory.mem[9], dut.DataMemory.mem[8]} , 32'hxxxx_FFFF );
+$display( " Address 8 containes: %h , expected: %h ", dut.DataMemory.mem[8] , 32'hxxxx_FFFF );
 $finish;
 end
 check_PC(32'd172);
@@ -343,10 +343,10 @@ check_PC(32'd172);
 
 @(posedge clk);
 #2;
-if( {dut.DataMemory.mem[15], dut.DataMemory.mem[14], dut.DataMemory.mem[13], dut.DataMemory.mem[12]} === 32'hxxxx_xxFF )
+if( dut.DataMemory.mem[12] === 32'hxxxx_xxFF )
 $display( "sb instruction is functional ");
 else begin
-$display( " Address 12 containes: %h , expected: %h ", {dut.DataMemory.mem[15], dut.DataMemory.mem[14], dut.DataMemory.mem[13], dut.DataMemory.mem[12]} , 32'hxxxx_xxFF );
+$display( " Address 12 containes: %h , expected: %h ",  dut.DataMemory.mem[12] , 32'hxxxx_xxFF );
 $finish;
 end
 check_PC(32'd176);
