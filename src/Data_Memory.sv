@@ -9,7 +9,7 @@ module DM(input logic [31:0] A, WD, input logic clk, WE, input logic [6:0] Op, i
     */
 
 logic [7:0] mem [0:1023];
-
+logic [31:0] mem2 [0:255];
 
 always_ff @( posedge clk) begin
      if(WE) begin
@@ -24,6 +24,9 @@ always_ff @( posedge clk) begin
                 mem[A + 2] <= WD[23:16];
                 mem[A + 3] <= WD[31:24];
 
+                //new logic
+                mem2 <= WD;
+
             end
 
             3'b001: begin //sh
@@ -31,9 +34,14 @@ always_ff @( posedge clk) begin
                 mem[A] <= WD[7:0];
                 mem[A + 1] <= WD[15:8];
 
+                //new logic
+                mem2 < WD[15:0];
+
             end
 
             3'b000: mem[A] <= WD[7:0]; //sb
+            //new logic
+            mem2 <= WD[7:0];
 
 
         endcase
@@ -44,6 +52,9 @@ always_ff @( posedge clk) begin
         mem[A + 1] <= WD[15:8];
         mem[A + 2] <= WD[23:16];
         mem[A + 3] <= WD[31:24];
+
+        //new logic 
+        mem2 <= WD;
 
         end
 

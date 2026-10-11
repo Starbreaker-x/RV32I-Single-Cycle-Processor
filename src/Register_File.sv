@@ -37,6 +37,8 @@ output logic [31:0] RD1, RD2);
 
                             3'b101: Registers[A3] <= { {16{1'b0}} , WD3[15:0] }; // lhu
 
+                            default ;
+
 
                         endcase
 
