@@ -1,7 +1,7 @@
 
     module Main_Decoder(input logic [6:0] Op,
     output logic RegWrite, ALUSrc, MemWrite, output logic [2:0] ResultSrc, output logic Branch,
-    output logic [2:0] ImmSrc, ALUOp);
+    output logic [2:0] ImmSrc, output logic [1:0] ALUOp);
 
 
 always_comb begin
