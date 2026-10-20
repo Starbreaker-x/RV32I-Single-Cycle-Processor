@@ -10,6 +10,7 @@ Implemented in SystemVerilog, simulated and verified in Vivado
 - I-type: lb , lh , lw , lbu , lhu , addi , slli , slti , sltiu , xori , srli , srai , ori , andi , jalr
 - S-type: sb , sh , sw
 - B-type: beq , bne , blt , bge , bltu , bgeu
+- ** B-type instructions behavior implemented incorrectly. Updates to datapath and testbenches coming soon **
 - R-type: add , sub , and , or , xor , slt , sltu , sll , srl , sra 
 - U-type: lui , auipc
 - J-type: jal
